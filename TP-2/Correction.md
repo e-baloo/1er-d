@@ -249,4 +249,105 @@ else:
 
 ## Exercice 15
 
+```python	
+somme = int(input("Entrez la somme a rendre (entier) : "))
 
+if somme // 20 > 0 :
+    print(f"{somme // 20} x billets de 20 euros")
+    somme = somme % 20
+
+if somme // 10 > 0 :
+    print(f"{somme // 10} x billets de 10 euros")
+    somme = somme % 10
+
+if somme // 5 > 0 :
+    print(f"{somme // 5} x billets de 5 euros")
+    somme = somme % 5
+
+if somme // 2 > 0 :
+    print(f"{somme // 2} x pieces de 2 euros")
+    somme = somme % 2
+
+if somme // 1 > 0 :
+    print(f"{somme // 1} x pieces de 1 euros")
+    somme = somme % 1
+```
+
+## Exercice 16
+
+```python
+poules = int(input("Entrez le nombre de poules 🐔 tués (entier) : "))
+chiens = int(input("Entrez le nombre de chiens 🐕 tués (entier) : "))
+vaches = int(input("Entrez le nombre de vaches 🐄 tués (entier) : "))
+amis = int(input("Entrez le nombre de amis 👦 tués (entier) : "))
+
+point_perdu = (poules * 1) + (chiens * 3) + (vaches * 5) + (amis * 10)
+
+somme = 200 # prix du permis de chasse
+
+if point_perdu > 10:
+    somme = somme + ((point_perdu - 10) *10) # 10€ par point perdu au dessus de 10
+
+print(f"Le prix du permis de chasse est de {somme}€ (point perdu : {point_perdu})")
+```
+
+## Exercice 17
+
+```python
+entier = int(input("Entrez le nombre (entier) : "))
+roman = ""
+
+num = entier
+
+if not (1 <= num <= 3999):
+     print("L'entier doit être compris entre 1 et 3999.")
+     exit()
+
+roman_numeral = ""
+
+# Traitement des milliers (M)
+roman_numeral += "M" * (num // 1000)
+num %= 1000
+
+# Traitement des centaines (C, CC, CCC, CD, D, DC, DCC, DCCC, CM)
+if num >= 900:
+    roman_numeral += "CM"
+    num -= 900
+elif num >= 500:
+    roman_numeral += "D"
+    num -= 500
+elif num >= 400:
+    roman_numeral += "CD"
+    num -= 400
+roman_numeral += "C" * (num // 100)
+num %= 100
+
+# Traitement des dizaines (X, XX, XXX, XL, L, LX, LXX, LXXX, XC)
+if num >= 90:
+    roman_numeral += "XC"
+    num -= 90
+elif num >= 50:
+    roman_numeral += "L"
+    num -= 50
+elif num >= 40:
+    roman_numeral += "XL"
+    num -= 40
+roman_numeral += "X" * (num // 10)
+num %= 10
+
+# Traitement des unités (I, II, III, IV, V, VI, VII, VIII, IX)
+if num == 9:
+    roman_numeral += "IX"
+    num -= 9
+elif num >= 5:
+    roman_numeral += "V"
+    num -= 5
+elif num == 4:
+    roman_numeral += "IV"
+    num -= 4
+roman_numeral += "I" * num
+
+roman = roman_numeral
+
+print(f"La conversion en chiffres romains de {entier} est : {roman}")
+```
